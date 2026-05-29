@@ -35,7 +35,7 @@ backup/
 .env.production
 .env.development
 
-# Node / dependencias, por si después agregás npm
+# Node /
 node_modules/
 package-lock.json
 
