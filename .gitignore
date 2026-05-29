@@ -1,0 +1,51 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / VS Code
+.vscode/
+.idea/
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Comprimidos
+*.zip
+*.rar
+*.7z
+
+# Capturas o pruebas locales
+screenshots/
+captures/
+preview/
+test/
+backup/
+
+# Variables sensibles
+.env
+.env.local
+.env.production
+.env.development
+
+# Node / dependencias, por si después agregás npm
+node_modules/
+package-lock.json
+
+# Builds
+dist/
+build/
+
+# Archivos privados
+private/
+secrets/
+credentials/
+passwords.txt
+claves.txt
