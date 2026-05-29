@@ -34,6 +34,3 @@ El proyecto presenta una landing/catálogo moderno para mostrar productos, filtr
 Proyecto en etapa demo.  
 Las imágenes, productos, precios y textos pueden ser reemplazados por contenido real del cliente.
 
-## Autor
-
-Desarrollado por Santiago Cossu.
