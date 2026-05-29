@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nacho Pirola | Catálogo Mayorista</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__left">
+      <a href="#" class="logo">
+        <img src="img/nachopirola.png" alt="Logo Nacho Pirola">
+      </a>
+
+      <div class="header__actions header__actions--desktop">
+        <a href="#catalogo" class="header-btn">Agendar cita showroom</a>
+        <a href="#catalogo" class="header-btn">Unite y recibí ofertas</a>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <span>⌕</span>
+      <input type="text" id="searchInput" placeholder="Buscar por nombre o artículo...">
+    </div>
+
+    <div class="header__right">
+      <button class="header-btn" id="infoBtn">Info Mayorista</button>
+      <button class="cart-btn" id="openCartBtn">
+        Carrito
+        <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content">
+      <span class="hero__eyebrow">Nacho Pirola Mayorista</span>
+      <h1>VENTA MAYORISTA DE INDUMENTARIA</h1>
+      <p>
+        Catálogo exclusivo de Nacho Pirola. Prendas seleccionadas,
+        precios mayoristas y atención personalizada por WhatsApp.
+      </p>
+
+      <div class="hero__buttons">
+        <a href="#catalogo" class="btn btn--light">Ver catálogo</a>
+        <a href="https://wa.me/5493424494726" target="_blank" class="btn btn--outline">Consultar por WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="hero__brand">
+      <img src="img/nachopirola.png" alt="Nacho Pirola">
+    </div>
+  </section>
+
+  <main class="main" id="catalogo">
+    <aside class="sidebar">
+      <div class="sidebar__top">
+        <h3>Ordenar por</h3>
+        <select id="sortSelect">
+          <option value="default">Predeterminado</option>
+          <option value="nameAsc">Artículo A→Z</option>
+          <option value="nameDesc">Artículo Z→A</option>
+          <option value="priceAsc">Menor precio</option>
+          <option value="priceDesc">Mayor precio</option>
+          <option value="catAsc">Categoría A→Z</option>
+          <option value="catDesc">Categoría Z→A</option>
+        </select>
+      </div>
+
+      <div class="sidebar__categories">
+        <h3>Categorías</h3>
+
+        <button class="category-btn active" data-category="Todos">Todos</button>
+        <button class="category-btn" data-category="Remeras">Remeras</button>
+        <button class="category-btn" data-category="Buzos">Buzos</button>
+        <button class="category-btn" data-category="Sweaters">Sweaters</button>
+        <button class="category-btn" data-category="Camperas">Camperas</button>
+        <button class="category-btn" data-category="Pantalones">Pantalones</button>
+        <button class="category-btn" data-category="Accesorios">Accesorios</button>
+
+        <button class="clear-btn" id="clearFiltersBtn">Limpiar filtros</button>
+      </div>
+    </aside>
+
+    <section class="catalog">
+      <div class="catalog__head">
+        <div>
+          <h2>Catálogo mayorista</h2>
+          <p>Elegí tus prendas, armá tu pedido y confirmalo por WhatsApp.</p>
+        </div>
+
+        <div class="catalog__chips">
+          <button class="chip active" data-category="Todos">Todos</button>
+          <button class="chip" data-category="Sweaters">Sweaters</button>
+          <button class="chip" data-category="Buzos">Buzos</button>
+          <button class="chip" data-category="Remeras">Remeras</button>
+          <button class="chip" data-category="Camperas">Camperas</button>
+        </div>
+      </div>
+
+      <p class="product-count" id="productCount"></p>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+
+  <section class="modal" id="productModal">
+    <button class="modal__close" id="closeProductModal">×</button>
+    <div class="modal__body" id="productModalBody"></div>
+  </section>
+
+  <section class="modal modal--small" id="infoModal">
+    <button class="modal__close" id="closeInfoModal">×</button>
+
+    <div class="info-box">
+      <h2>Información mayorista</h2>
+      <ul>
+        <li>Compra mínima: 6 prendas surtidas.</li>
+        <li>Los precios no incluyen IVA.</li>
+        <li>Los pedidos se confirman por WhatsApp.</li>
+        <li>Entregas coordinadas con el vendedor.</li>
+        <li>Cambios sujetos a disponibilidad.</li>
+        <li>Atención personalizada para revendedores y locales.</li>
+      </ul>
+      <button class="btn btn--dark" id="acceptInfoBtn">Entendido</button>
+    </div>
+  </section>
+
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-panel__head">
+      <h2>Tu carrito</h2>
+      <button id="closeCartBtn">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="subtotalText">$0</strong>
+      </div>
+
+      <div class="summary-row discount">
+        <span>Descuento</span>
+        <strong id="discountText">-$0</strong>
+      </div>
+
+      <div class="summary-row total">
+        <span>Total final</span>
+        <strong id="totalText">$0</strong>
+      </div>
+
+      <p class="tax-note">Los precios no incluyen IVA</p>
+
+      <div class="cart-form">
+        <label>
+          Nombre y apellido o empresa
+          <input type="text" id="clientName" placeholder="Ej: Juan Pérez">
+        </label>
+
+        <label>
+          DNI/CUIT
+          <input type="text" id="clientDni" placeholder="Ej: 20-12345678-9">
+        </label>
+
+        <label>
+          Elegí tu vendedor
+          <select id="sellerSelect">
+            <option value="">Seleccionar vendedor</option>
+            <option value="Nacho">Nacho</option>
+            <option value="Ventas mayoristas">Ventas mayoristas</option>
+            <option value="Showroom">Showroom</option>
+          </select>
+        </label>
+      </div>
+
+      <button class="btn btn--whatsapp" id="confirmOrderBtn">Confirmar pedido por WhatsApp</button>
+      <button class="btn btn--danger" id="clearCartBtn">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
